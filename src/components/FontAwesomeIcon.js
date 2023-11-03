@@ -39,8 +39,8 @@ function normalizeIconArgs (icon) {
 }
 
 export default function FontAwesomeIcon (props) {
-  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = props
-  const style = StyleSheet.flatten(props.style)
+  const { icon: iconArgs = null, mask: maskArgs = null, maskId = null, height, width, size = DEFAULT_SIZE } = props
+  const style = StyleSheet.flatten(props.style ?? {})
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
@@ -135,18 +135,6 @@ FontAwesomeIcon.propTypes = {
   maskId: PropTypes.string,
 
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-}
-
-FontAwesomeIcon.defaultProps = {
-  icon: null,
-  mask: null,
-  maskId: null,
-  transform: null,
-  style: {},
-  color: null,
-  secondaryColor: null,
-  secondaryOpacity: null,
-  size: DEFAULT_SIZE
 }
 
 const convertCurry = convert.bind(null, React.createElement)
