@@ -74,14 +74,20 @@ function normalizeIconArgs(icon) {
 }
 
 function FontAwesomeIcon(props) {
-  var iconArgs = props.icon,
-      maskArgs = props.mask,
-      maskId = props.maskId,
+  var _props$style;
+
+  var _props$icon = props.icon,
+      iconArgs = _props$icon === void 0 ? null : _props$icon,
+      _props$mask = props.mask,
+      maskArgs = _props$mask === void 0 ? null : _props$mask,
+      _props$maskId = props.maskId,
+      maskId = _props$maskId === void 0 ? null : _props$maskId,
       height = props.height,
       width = props.width,
-      size = props.size;
+      _props$size = props.size,
+      size = _props$size === void 0 ? DEFAULT_SIZE : _props$size;
 
-  var style = _reactNative.StyleSheet.flatten(props.style);
+  var style = _reactNative.StyleSheet.flatten((_props$style = props.style) !== null && _props$style !== void 0 ? _props$style : {});
 
   var iconLookup = normalizeIconArgs(iconArgs);
   var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
@@ -140,17 +146,6 @@ FontAwesomeIcon.propTypes = {
   mask: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
   maskId: _propTypes["default"].string,
   transform: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object])
-};
-FontAwesomeIcon.defaultProps = {
-  icon: null,
-  mask: null,
-  maskId: null,
-  transform: null,
-  style: {},
-  color: null,
-  secondaryColor: null,
-  secondaryOpacity: null,
-  size: DEFAULT_SIZE
 };
 
 var convertCurry = _converter["default"].bind(null, _react["default"].createElement);
